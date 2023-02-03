@@ -33,7 +33,7 @@
 body{
     background-color: var(--White-text);
     font-size: 16px;
-    width: 100%;
+    min-width: 100%;
     min-height: 100vh;
     overflow-x: hidden;
 }
@@ -51,8 +51,10 @@ header{
     background-image: url("../images/bg-pattern-intro-desktop.svg");
     width: 100%;
     background-repeat: no-repeat;
-    background-size: 140rem;
-    background-position: left;
+    /* dont give background a fixed size. use cover, contain etc, depending on your preference */
+    /* background-size: 140rem; */ 
+    background-size: cover;
+    background-position: center;
     height: 34.5rem;
     border-bottom-left-radius: 70px;
 }
@@ -137,7 +139,8 @@ header{
     justify-content: center;
     align-items: center;
     gap: 1rem;
-    margin-left: 20rem;
+    /* Always avoid using margins or padding for spacing and positioning */
+    /* margin-left: 20rem; */
 }
 
 .header-div-2{
@@ -191,10 +194,14 @@ section{
 }
 
 section > h2{
-    position: absolute;
+    /* You don't need position absolute for this */
+    /* position: absolute; */
+    /* border: 1px solid red; */
+    /* Always avoid using marging to position or center things. In this case, just give it a width of 100% so it occupies the entire width and then give it txt align centre so it is centered */
+    width: 100%;
     text-align: center;
-    margin-top: 10rem;
-    margin-left: 30rem;
+    /* margin-top: 10rem;
+    margin-left: 30rem; */
     font-size: 30px;
     font-weight: 600;
 }
@@ -206,13 +213,20 @@ section > h2{
     width: 100%;
     color: var(--Very-dark-blue-heading);
     margin-bottom: 2rem;
+    /* border: 1px solid blue; */
+
+    /* This makes sure elements outside the viewport are hidden */
+    overflow-x: hidden;
 }
 
 .section-div-1 > article{
     display: flex;
     flex-direction: column;
     gap:  2rem;
-    width: 65%;
+
+    /* Your maths is not mathing 65 + 45 is not 100 */
+    width: 55%;
+    /* border: 1px solid red; */
 }
 
 .article-div-text > h2{
@@ -227,6 +241,7 @@ section > h2{
 
 .section-div-img-1{
     width: 45%;
+    /* border: 1px solid red; */
 }
 
 
@@ -246,6 +261,7 @@ section > h2{
     border-bottom-left-radius: 35px;
 }
 
+/* This is bad. now every article tag will have a padding of 100px */
 article{
     padding: 100px;
 }
@@ -300,11 +316,12 @@ footer{
     padding-bottom: 30px;
     padding-left: 100px;
     border-top-right-radius: 60px;
+    width: 100%;
 }
 
 .footer-container{
     display: flex;
-    gap: 10rem;
+    /* gap: 10rem; */
 }
 
 .footer-menu{
@@ -330,6 +347,168 @@ footer{
 }
 
 /* media query */
+
+/* your breakpoints should be orderly. follow the breakpoint screens i sent to you. That's the standard */
+
+@media screen and (max-width: 1024px) {
+    .header-div-1 {
+        width: 100%;
+        padding: 0;
+        gap: 0;
+        justify-content: space-between;
+        padding: 10px 20px;
+    }
+
+    /* .header-div-1{
+        display: flex;
+        padding: 50px 70px;
+        justify-content: center;
+        align-items: center;
+        gap: 3rem;
+        width: 100%;
+    } */
+    article{
+        padding: 50px 20px;
+    } 
+
+    footer {
+        padding: 0;
+        margin: 0;
+    }
+}
+
+@media screen and (max-width:726px){
+    .div-image-2{
+        width: 100%;
+    }
+
+    .div-image-2 > img{
+        width: 70%;
+    }
+}
+
+@media screen and (max-width:780px){
+    body{
+        overflow-x: hidden;
+        width: 100%;
+    }
+
+    header{
+        width: 100%;
+    }
+
+    .header-div-1{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .header-link{
+        display: flex;
+        width: 100%;
+        justify-content: center;
+        align-items: center;
+        margin-left: 0;
+    }
+
+    section > h2{
+        position: static;
+        text-align: center;
+        margin-top: 2rem;
+        margin-left: 0;
+        margin-bottom: 3rem;
+    }
+
+    .section-div-1{
+        display: flex;
+        flex-direction: column-reverse;
+        width: 100%;
+        padding: 0;
+        margin-top: 2rem;
+    }
+
+    .article-div-1{
+        width: 100%;
+    }
+
+    .article-div-text{
+        width: 100%;
+        margin-left: 0;
+        margin-right: 0;
+        padding: 0;
+    }
+
+    .article-div-text > h2{
+        width: 100%;
+    }
+
+    .article-div-text > p{
+        width: 100%;
+    }
+
+    .section-div-1 > article{
+       width: 100%;
+       text-align: center;
+    }
+
+    .section-div-img-1{
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .section-div-img-1 > img{
+        width: 70%;
+        object-fit: contain;
+    }
+
+
+    .section-div-2{
+        display: flex;
+        flex-direction: column;
+        height: 150vh;
+    }
+
+    .div-article-2{
+        margin-bottom: 3rem;
+    }
+
+
+    .section-div-3{
+        display: flex;
+        flex-direction: column;
+        padding: 2rem;
+    }
+
+    .div-3-text{
+        text-align: center;
+        padding: 2rem;
+        width: 100%;
+    }
+
+    .div-3-text > p{
+        width: 60%;
+    }
+
+
+    .footer-container{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+   
+}
+
+
+@media screen and (max-width: 606px) {
+    header{
+        height: 50rem;
+    }
+}
 
 @media screen and (max-width:480px){
     body{
@@ -478,135 +657,4 @@ footer{
     }
 }
 
-@media screen and (max-width:780px){
-    body{
-        overflow-x: hidden;
-        width: 100%;
-    }
 
-    header{
-        width: 100%;
-    }
-
-    .header-div-1{
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-    }
-
-    .header-link{
-        display: flex;
-        width: 100%;
-        justify-content: center;
-        align-items: center;
-        margin-left: 0;
-    }
-
-    section > h2{
-        position: static;
-        text-align: center;
-        margin-top: 2rem;
-        margin-left: 0;
-        margin-bottom: 3rem;
-    }
-
-    .section-div-1{
-        display: flex;
-        flex-direction: column-reverse;
-        width: 100%;
-        padding: 0;
-        margin-top: 2rem;
-    }
-
-    .article-div-1{
-        width: 100%;
-    }
-
-    .article-div-text{
-        width: 100%;
-        margin-left: 0;
-        margin-right: 0;
-        padding: 0;
-    }
-
-    .article-div-text > h2{
-        width: 100%;
-    }
-
-    .article-div-text > p{
-        width: 100%;
-    }
-
-    .section-div-1 > article{
-       width: 100%;
-       text-align: center;
-    }
-
-    .section-div-img-1{
-        width: 100%;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-    }
-
-    .section-div-img-1 > img{
-        width: 70%;
-        object-fit: contain;
-    }
-
-
-    .section-div-2{
-        display: flex;
-        flex-direction: column;
-        height: 150vh;
-    }
-
-    .div-article-2{
-        margin-bottom: 3rem;
-    }
-
-
-    .section-div-3{
-        display: flex;
-        flex-direction: column;
-        padding: 2rem;
-    }
-
-    .div-3-text{
-        text-align: center;
-        padding: 2rem;
-        width: 100%;
-    }
-
-    .div-3-text > p{
-        width: 60%;
-    }
-
-
-    .footer-container{
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-    }
-
-   
-}
-
-
-@media screen and (max-width:726px){
-    .div-image-2{
-        width: 100%;
-    }
-
-    .div-image-2 > img{
-        width: 70%;
-    }
-}
-
-@media screen and (max-width: 606px) {
-    header{
-        height: 50rem;
-    }
-}
